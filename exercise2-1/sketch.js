@@ -9,13 +9,20 @@ function setup() {
 
 function draw() {
     background(255);
+    rectMode(CENTER);
+    rect(width/2, height/2);
     circle(x, y, 100);
-    if (x < 50 || x > width - 50) {
+    if (isOutOfBounds(x, 50, width - 50) === true || isOutOfBounds(y, 50, height - 50) === true){
         speedX *= -1;
-    }
-    if (y < 50 || y > height - 50) {
-        speedY *= -1;
     }
     x += speedX;
     y += speedY;
+}
+
+function isOutOfBounds(coordinate, minVal, maxVal){
+    if (coordinate > maxVal || coordinate < minVal){
+        return true;
+    } else {
+        return false;
+    }
 }
